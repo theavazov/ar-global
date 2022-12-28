@@ -1,6 +1,14 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+const withVideos = require("next-videos");
 
-module.exports = nextConfig
+const nextConfig = {
+  i18n: {
+    locales: ["en", "ru"],
+    defaultLocale: "en",
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+};
+
+module.exports = withVideos(nextConfig);
