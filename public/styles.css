@@ -148,13 +148,10 @@ textarea:focus {
 }
 
 .info_content {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 32px;
-}
-
-.info_content p {
-  max-width: 400px;
 }
 
 .hidden_video {
@@ -240,11 +237,6 @@ textarea:focus {
 }
 
 /* === SERVICES === */
-.services_inner .section_title {
-  max-width: 1080px;
-  width: 100%;
-}
-
 .services_side {
   display: grid;
   grid-template-columns: 0.4fr 0.6fr;

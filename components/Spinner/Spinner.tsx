@@ -22,7 +22,6 @@ export default function Spinner({ isLoading, setIsLoading }: Props) {
         <div></div>
         <div></div>
       </div>
-      <button onClick={() => setIsLoading(false)}>Hide</button>
     </div>
   );
 }

@@ -2,9 +2,10 @@ import bgVideo from "../public/media/video.mp4";
 
 type Props = {
   myRef: any;
+  translations: any;
 };
 
-export default function Info({ myRef }: Props) {
+export default function Info({ myRef, translations }: Props) {
   const onRefClick = (ref: any) => {
     ref.current.scrollIntoView(true);
   };
@@ -13,18 +14,15 @@ export default function Info({ myRef }: Props) {
     <section>
       <div className="box info_inner">
         <h1 className="section_title">
-          We are trucking industry <span>experts</span>
+          <span>{translations.we}</span> {translations.info_title}
         </h1>
         <div className="hidden_video">
           <video src={bgVideo} muted autoPlay loop playsInline></video>
         </div>
         <div className="info_content">
-          <p className="p">
-            Outsource your dispatching, payroll, safety.... to us, we will do it
-            better than anyone else!
-          </p>
+          <p className="p">{translations.info_desc}</p>
           <button className="main_btn" onClick={() => onRefClick(myRef)}>
-            Connect with us
+            {translations.connect}
           </button>
         </div>
       </div>

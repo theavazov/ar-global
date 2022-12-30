@@ -5,23 +5,6 @@ type Props = {
 };
 
 export default function About({ myRef }: Props) {
-  const [isActive, setIsActive] = useState<Boolean>(false);
-
-  const scrollFunction = () => {
-    let top = window.pageYOffset;
-    if (top >= myRef.current.offsetTop) {
-      console.log("about");
-    }
-  };
-
-  useEffect(() => {
-    let top = window.pageYOffset;
-    window.addEventListener("scroll", scrollFunction);
-    return () => {
-      window.removeEventListener("scroll", scrollFunction);
-    };
-  }, []);
-
   return (
     <section ref={myRef}>
       <div className="box">

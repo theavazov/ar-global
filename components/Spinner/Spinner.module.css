@@ -16,13 +16,6 @@
   pointer-events: none;
 }
 
-.spinner button {
-  position: absolute;
-  bottom: 20%;
-  left: auto;
-  right: auto;
-}
-
 .lds_roller {
   display: inline-block;
   position: relative;

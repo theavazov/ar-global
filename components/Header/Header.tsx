@@ -12,6 +12,7 @@ type Props = {
   recruitingRef: any;
   contactRef: any;
   setIsLoading: Function;
+  translations: any;
 };
 
 export default function Header({
@@ -20,6 +21,7 @@ export default function Header({
   recruitingRef,
   contactRef,
   setIsLoading,
+  translations,
 }: Props) {
   const router = useRouter();
 
@@ -28,6 +30,7 @@ export default function Header({
   const [isRecruitingActive, setIsRecruitingActive] = useState<boolean>(false);
   const [isContactActive, setIsContactActive] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [isClicked, setIsClicked] = useState<boolean>(false);
 
   const toTop = () => {
     window.scrollTo({
@@ -88,9 +91,10 @@ export default function Header({
     };
   }, []);
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-  // }, [router.locale]);
+  useEffect(() => {
+    setIsLoading(true);
+    setIsClicked(false);
+  }, [router.locale]);
 
   return (
     <header
@@ -105,6 +109,7 @@ export default function Header({
           alt="logo"
           role={"button"}
           onClick={toTop}
+          priority={true}
         />
         <div className={styles.secondary_div}>
           <nav className={styles.header_nav}>
@@ -116,7 +121,7 @@ export default function Header({
               }
               onClick={() => onRefClick(aboutRef)}
             >
-              About
+              {translations.about}
             </button>
             <button
               className={
@@ -126,7 +131,7 @@ export default function Header({
               }
               onClick={() => onRefClick(servicesRef)}
             >
-              Services
+              {translations.services}
             </button>
             <button
               className={
@@ -136,7 +141,7 @@ export default function Header({
               }
               onClick={() => onRefClick(recruitingRef)}
             >
-              Recruiting
+              {translations.recruiting}
             </button>
             <button
               className={
@@ -146,7 +151,7 @@ export default function Header({
               }
               onClick={() => onRefClick(contactRef)}
             >
-              Contact
+              {translations.contact}
             </button>
           </nav>
           <div className={styles.extra_div}>
@@ -168,12 +173,85 @@ export default function Header({
                 </nav>
               </div>
             </div>
-            <div className={styles.hamburger}>
-              <span></span>
-              <span></span>
-              <span></span>
+            <div
+              className={styles.hamburger}
+              role={"button"}
+              onClick={() => setIsClicked(!isClicked)}
+            >
+              <span className={isClicked ? styles.rotate1 : ""}></span>
+              <span className={isClicked ? styles.hidden : ""}></span>
+              <span className={isClicked ? styles.rotate2 : ""}></span>
             </div>
           </div>
+        </div>
+      </div>
+      <div
+        className={
+          isClicked
+            ? `${styles.mobile_header} ${styles.show}`
+            : styles.mobile_header
+        }
+      >
+        <div className={styles.mobile_header_inner}>
+          <nav className={styles.mobile_header_nav}>
+            <nav className={styles.mobile_nav}>
+              <button
+                className={styles.tipa_link}
+                onClick={() => {
+                  setIsClicked(false);
+                  setTimeout(() => {
+                    aboutRef.current.scrollIntoView(true);
+                  }, 500);
+                }}
+              >
+                {translations.about}
+              </button>
+              <button
+                className={styles.tipa_link}
+                onClick={() => {
+                  setIsClicked(false);
+                  setTimeout(() => {
+                    servicesRef.current.scrollIntoView(true);
+                  }, 500);
+                }}
+              >
+                {translations.services}
+              </button>
+              <button
+                className={styles.tipa_link}
+                onClick={() => {
+                  setIsClicked(false);
+                  setTimeout(() => {
+                    recruitingRef.current.scrollIntoView(true);
+                  }, 500);
+                }}
+              >
+                {translations.recruiting}
+              </button>
+              <button
+                className={styles.tipa_link}
+                onClick={() => {
+                  setIsClicked(false);
+                  setTimeout(() => {
+                    contactRef.current.scrollIntoView(true);
+                  }, 500);
+                }}
+              >
+                {translations.contact}
+              </button>
+            </nav>
+          </nav>
+          <button
+            className="main_btn"
+            onClick={() => {
+              setIsClicked(false);
+              setTimeout(() => {
+                contactRef.current.scrollIntoView(true);
+              }, 500);
+            }}
+          >
+            {translations.connect}
+          </button>
         </div>
       </div>
     </header>

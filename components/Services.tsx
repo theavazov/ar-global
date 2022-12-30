@@ -5,9 +5,10 @@ import Accordion from "react-bootstrap/Accordion";
 
 type Props = {
   myRef: any;
+  translations: any;
 };
 
-export default function Services({ myRef }: Props) {
+export default function Services({ myRef, translations }: Props) {
   const services = [
     {
       id: 1,
@@ -45,17 +46,18 @@ export default function Services({ myRef }: Props) {
     <section ref={myRef}>
       <div className="box services_inner">
         <div className="titles_div">
-          <p className="mini_title">SERVICES</p>
+          <p className="mini_title">{translations.services}</p>
           <h1 className="section_title">
-            What we actually can do for your <span>business</span>
+            {translations.service_title} <span>{translations.business}</span>
           </h1>
         </div>
-        <p className="p">We operate 24/7/365</p>
+        <p className="p">{translations.operate} 24/7/365</p>
         <div className="services_side">
           <Image
             className="service_img"
             src={serviceImg}
             alt="services image"
+            priority={true}
           />
           <Accordion className="services_container">
             {services.map((service) => {

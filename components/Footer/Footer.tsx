@@ -1,6 +1,10 @@
 import styles from "./Footer.module.css";
 
-export default function Footer() {
+type Props = {
+  translations: any;
+};
+
+export default function Footer({ translations }: Props) {
   return (
     <footer className={styles.footer}>
       <div className={`box`}>
@@ -9,10 +13,10 @@ export default function Footer() {
             <p>
               Copyright &copy; {new Date().getFullYear()} AR-GLOBAL-LOGISTICS.
             </p>
-            <p>All rights reserved.</p>
+            <p>{translations.copyright}.</p>
           </div>
           <p className={styles.ndc}>
-            Developed by:{" "}
+            {translations.developed}:{" "}
             <a href="https://ndc.uz" target={"_blank"} rel="noreferrer">
               NDC
             </a>
