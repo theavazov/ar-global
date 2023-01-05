@@ -2,45 +2,28 @@ import Image from "next/image";
 import { service_arow } from "../public/icons";
 import serviceImg from "../public/media/service.png";
 import Accordion from "react-bootstrap/Accordion";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 type Props = {
   myRef: any;
   translations: any;
+  BASE_URL: string;
 };
 
-export default function Services({ myRef, translations }: Props) {
-  const services = [
-    {
-      id: 1,
-      title: "Truck Dispatch",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-      id: 2,
-      title: "Accounts Payables & Accounts Receivables",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-      id: 3,
-      title: "Payroll",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-      id: 4,
-      title: "Safety / HR",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-      id: 5,
-      title: "Fleet / maintenance",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-      id: 6,
-      title: "Claims",
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-  ];
+export default function Services({ myRef, translations, BASE_URL }: Props) {
+  const router = useRouter();
+  const [services, setServices] = useState<any>([]);
+
+  useEffect(() => {
+    axios
+      .get(BASE_URL + "/faq")
+      .then((res) => {
+        setServices(res.data.data);
+      })
+      .catch((err) => console.log(err));
+  }, [router.locale]);
 
   return (
     <section ref={myRef}>
@@ -60,8 +43,50 @@ export default function Services({ myRef, translations }: Props) {
             priority={true}
           />
           <Accordion className="services_container">
-            {services.map((service) => {
-              return <Service key={service.id} service={service} />;
+            {services.map((service: any) => {
+              if (router.locale === "en") {
+                let question = service.question.en;
+                let answer = service.answer.en;
+                return (
+                  <Accordion.Item
+                    key={service.id}
+                    eventKey={service.id}
+                    className="service"
+                  >
+                    <Accordion.Header className="service_header">
+                      <p dangerouslySetInnerHTML={{ __html: question }}></p>
+                      {service_arow}
+                    </Accordion.Header>
+                    <Accordion.Body className="service_body">
+                      <div
+                        className="faq_body"
+                        dangerouslySetInnerHTML={{ __html: answer }}
+                      ></div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                );
+              } else if (router.locale === "ru") {
+                let question = service.question.ru;
+                let answer = service.answer.ru;
+                return (
+                  <Accordion.Item
+                    key={service.id}
+                    eventKey={service.id}
+                    className="service"
+                  >
+                    <Accordion.Header className="service_header">
+                      <p dangerouslySetInnerHTML={{ __html: question }}></p>
+                      {service_arow}
+                    </Accordion.Header>
+                    <Accordion.Body className="service_body">
+                      <div
+                        className="faq_body"
+                        dangerouslySetInnerHTML={{ __html: answer }}
+                      ></div>
+                    </Accordion.Body>
+                  </Accordion.Item>
+                );
+              }
             })}
           </Accordion>
         </div>
@@ -70,16 +95,30 @@ export default function Services({ myRef, translations }: Props) {
   );
 }
 
-const Service = ({ service }: any) => {
-  return (
-    <Accordion.Item eventKey={service.id} className="service">
-      <Accordion.Header className="service_header">
-        <p>{service.title}</p>
-        {service_arow}
-      </Accordion.Header>
-      <Accordion.Body className="service_body">
-        <p className="p">{service.text}</p>
-      </Accordion.Body>
-    </Accordion.Item>
-  );
+const Service = ({ service, router }: any) => {
+  if (router.locale === "en") {
+    return (
+      <Accordion.Item eventKey={service.id} className="service">
+        <Accordion.Header className="service_header">
+          <p>{service.title}</p>
+          {service_arow}
+        </Accordion.Header>
+        <Accordion.Body className="service_body">
+          <p className="p">{service.text}</p>
+        </Accordion.Body>
+      </Accordion.Item>
+    );
+  } else if (router.locale === "ru") {
+    return (
+      <Accordion.Item eventKey={service.id} className="service">
+        <Accordion.Header className="service_header">
+          <p>{service.title}</p>
+          {service_arow}
+        </Accordion.Header>
+        <Accordion.Body className="service_body">
+          <p className="p">{service.text}</p>
+        </Accordion.Body>
+      </Accordion.Item>
+    );
+  }
 };

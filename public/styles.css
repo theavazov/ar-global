@@ -74,6 +74,7 @@ section {
   font-weight: 800;
   color: var(--white);
   text-transform: uppercase;
+  width: 100%;
 }
 
 .section_title span {
@@ -142,13 +143,14 @@ textarea:focus {
 /* === INFO === */
 .info_inner {
   display: grid;
-  grid-template-columns: 0.6fr 0.4fr;
+  grid-template-columns: 0.65fr 0.35fr;
   align-items: center;
   gap: 80px;
 }
 
 .info_content {
-  width: 100%;
+  max-width: 100% !important;
+  width: 100% !important;
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -202,7 +204,7 @@ textarea:focus {
   display: grid;
   grid-template-columns: 0.65fr 0.35fr;
   align-items: center;
-  gap: 60px;
+  gap: 50px;
 }
 
 .about_titles {
@@ -300,6 +302,18 @@ textarea:focus {
 
 .service_body {
   padding: 0px !important;
+}
+
+.faq_body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq_body p {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--white);
 }
 
 /* === RECRUITING === */
@@ -521,6 +535,39 @@ textarea:focus {
   text-transform: uppercase;
 }
 
+.imask {
+  display: flex;
+  align-items: center;
+  border: 1px solid #555555;
+  border-radius: 12px;
+  overflow: hidden;
+  padding-inline: 24px;
+}
+
+.imask input {
+  border-radius: 0px;
+  flex: 1 1 auto;
+  padding-left: 6px;
+  border: none;
+}
+
+.success.show {
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.success {
+  position: fixed;
+  top: 40px;
+  right: 40px;
+  z-index: 5;
+  background-color: green;
+  padding: 16px;
+  opacity: 0;
+  transition: 0.5s;
+  pointer-events: none;
+}
+
 @media (max-width: 1800px) {
   .section_title {
     font-size: 64px;
@@ -679,6 +726,7 @@ textarea:focus {
   }
   .service_img {
     height: 530px;
+    border-radius: 16px;
   }
   .service_header svg {
     width: 24px;

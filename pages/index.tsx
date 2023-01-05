@@ -18,6 +18,7 @@ export default function Home() {
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isSucces, setIsSucces] = useState<boolean>(false);
 
   const aboutRef = useRef();
   const servicesRef = useRef();
@@ -118,8 +119,12 @@ export default function Home() {
       />
       <main>
         <Info myRef={contactRef} translations={translations} />
-        <About myRef={aboutRef} />
-        <Services myRef={servicesRef} translations={translations} />
+        <About myRef={aboutRef} translations={translations} />
+        <Services
+          myRef={servicesRef}
+          translations={translations}
+          BASE_URL={BASE_URL}
+        />
         <Recruiting
           myRef={recruitingRef}
           formRef={contactRef}
@@ -130,10 +135,17 @@ export default function Home() {
           myRef={contactRef}
           translations={translations}
         />
-        <Form url={BASE_URL} translations={translations} />
+        <Form
+          url={BASE_URL}
+          translations={translations}
+          setIsSucces={setIsSucces}
+        />
       </main>
       <Footer translations={translations} />
       <Spinner isLoading={isLoading} setIsLoading={setIsLoading} />
+      <p className={isSucces ? "success show" : "success"}>
+        {translations.message}
+      </p>
     </>
   );
 }

@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 type Props = {
   information: any;
   myRef: any;

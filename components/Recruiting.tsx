@@ -35,7 +35,7 @@ export default function Recruiting({ myRef, formRef, translations }: Props) {
             <Image src={ceo} alt="ceo" priority={true} />
             <div className="ceo_content">
               <div className="ceo_titles">
-                <p className="ceo_name">Karimov Rizamat </p>
+                <p className="ceo_name">Karimov Rizamat</p>
                 <p className="ceo_job">{translations.ceo_job}</p>
               </div>
               <p className="ceo_quote">{translations.ceo_quote}</p>
@@ -46,7 +46,7 @@ export default function Recruiting({ myRef, formRef, translations }: Props) {
           <Image src={hr} alt="hr" />
           <div className="hr_texts">
             <p className="hr_title">500+</p>
-            <p className="p">Employees working in our company</p>
+            <p className="p">{translations.staff}</p>
           </div>
         </div>
       </div>
