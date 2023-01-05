@@ -100,8 +100,7 @@ section {
   border: none;
   background-color: var(--red);
   padding: 16px 30px;
-  max-width: 245px;
-  width: 100%;
+  width: fit-content;
   text-align: center;
   border-radius: 12px;
   overflow: hidden;
@@ -239,6 +238,10 @@ textarea:focus {
 }
 
 /* === SERVICES === */
+.services_inner .section_title {
+  max-width: 1370px;
+}
+
 .services_side {
   display: grid;
   grid-template-columns: 0.4fr 0.6fr;
@@ -281,7 +284,7 @@ textarea:focus {
 }
 
 .accordion-button svg {
-  transform: rotate(45deg);
+  transform: rotate(90deg);
   transition: 0.3s;
 }
 
@@ -322,6 +325,10 @@ textarea:focus {
   grid-template-columns: 0.6fr 0.4fr;
   align-items: center;
   gap: 24px;
+}
+
+.recruiting_inner .section_title {
+  max-width: 760px;
 }
 
 .recruit_img_div {
@@ -709,6 +716,7 @@ textarea:focus {
   }
   .main_btn {
     max-width: 100%;
+    width: 100%;
     font-size: 14px;
     line-height: 17px;
   }

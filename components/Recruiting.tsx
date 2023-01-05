@@ -45,7 +45,7 @@ export default function Recruiting({ myRef, formRef, translations }: Props) {
         <div className="recruit_img_div">
           <Image src={hr} alt="hr" />
           <div className="hr_texts">
-            <p className="hr_title">500+</p>
+            <p className="hr_title">{translations.staff_number}</p>
             <p className="p">{translations.staff}</p>
           </div>
         </div>

@@ -19,12 +19,12 @@ export default function About({ myRef, translations }: Props) {
           </div>
           <div className="about_stats_side">
             <div className="about_stats">
-              <p className="stats_title">500+</p>
+              <p className="stats_title">{translations.staff_number}</p>
               <p className="p">{translations.staff}</p>
             </div>
             <div className="about_stats">
               <p className="stats_title">
-                <span>{translations.since}</span> 2020
+                <span>{translations.since}</span> {translations.start_year}
               </p>
               <p className="p">{translations.history}</p>
             </div>

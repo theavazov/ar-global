@@ -166,7 +166,11 @@ export default function Header({
                         href={router.asPath}
                         locale={singleLocale}
                       >
-                        {singleLocale}
+                        {singleLocale === "en"
+                          ? "English"
+                          : singleLocale === "ru"
+                          ? "Русский"
+                          : singleLocale}
                       </Link>
                     );
                   })}
