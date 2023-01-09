@@ -1,3 +1,5 @@
+import { useRef, useState } from "react";
+import { play } from "../public/icons";
 import bgVideo from "../public/media/video.mp4";
 
 type Props = {
@@ -6,6 +8,8 @@ type Props = {
 };
 
 export default function Info({ myRef, translations }: Props) {
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+
   const onRefClick = (ref: any) => {
     ref.current.scrollIntoView(true);
   };
@@ -14,10 +18,26 @@ export default function Info({ myRef, translations }: Props) {
     <section>
       <div className="box info_inner">
         <h1 className="section_title">
-          <span>{translations.we}</span> {translations.info_title}
+          <span>{}</span> {translations.info_title}
         </h1>
         <div className="hidden_video">
-          <video src={bgVideo} muted autoPlay loop playsInline></video>
+          <div
+            className={isPlaying ? "video_mask" : "video_mask show"}
+            onClick={() => setIsPlaying(true)}
+          >
+            <div className="play_btn">{play}</div>
+          </div>
+          <video
+            onClick={() => {
+              setIsPlaying(false);
+            }}
+            src={bgVideo}
+            muted={isPlaying ? false : true}
+            autoPlay={isPlaying ? false : true}
+            loop
+            controls={isPlaying ? true : false}
+            className={isPlaying ? "video" : "video hide"}
+          ></video>
         </div>
         <div className="info_content">
           <p className="p">{translations.info_desc}</p>
@@ -28,7 +48,23 @@ export default function Info({ myRef, translations }: Props) {
       </div>
       <div className="box">
         <div className="video_div">
-          <video src={bgVideo} muted autoPlay loop playsInline></video>
+          <div
+            className={isPlaying ? "video_mask" : "video_mask show"}
+            onClick={() => setIsPlaying(true)}
+          >
+            <div className="play_btn">{play}</div>
+          </div>
+          <video
+            onClick={() => {
+              setIsPlaying(false);
+            }}
+            src={bgVideo}
+            muted={isPlaying ? false : true}
+            autoPlay={isPlaying ? false : true}
+            loop
+            controls={isPlaying ? true : false}
+            className={isPlaying ? "video" : "video hide"}
+          ></video>
         </div>
       </div>
     </section>
