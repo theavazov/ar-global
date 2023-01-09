@@ -177,9 +177,6 @@ textarea:focus {
 
 .video_mask.show {
   display: grid;
-  background-image: url("../public/media/poster.png");
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .video_mask {
@@ -192,6 +189,15 @@ textarea:focus {
   place-items: center;
   background-color: rgba(20, 20, 20, 0.4);
   cursor: pointer;
+}
+
+.video_mask img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 .play_btn {

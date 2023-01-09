@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import { play } from "../public/icons";
 import bgVideo from "../public/media/video.mp4";
+import poster from "../public/media/poster.png";
+import Image from "next/image";
 
 type Props = {
   myRef: any;
@@ -26,6 +28,7 @@ export default function Info({ myRef, translations }: Props) {
             onClick={() => setIsPlaying(true)}
           >
             <div className="play_btn">{play}</div>
+            <Image src={poster} alt="poster" />
           </div>
           <video
             onClick={() => {
@@ -53,6 +56,7 @@ export default function Info({ myRef, translations }: Props) {
             onClick={() => setIsPlaying(true)}
           >
             <div className="play_btn">{play}</div>
+            <Image src={poster} alt="poster" />
           </div>
           <video
             onClick={() => {
