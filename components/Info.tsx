@@ -18,7 +18,7 @@ export default function Info({ myRef, translations }: Props) {
     <section>
       <div className="box info_inner">
         <h1 className="section_title">
-          <span>{}</span> {translations.info_title}
+          <span>{translations.we}</span> {translations.info_title}
         </h1>
         <div className="hidden_video">
           <div

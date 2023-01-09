@@ -180,7 +180,6 @@ textarea:focus {
   background-image: url("../public/media/poster.png");
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .video_mask {
@@ -202,7 +201,7 @@ textarea:focus {
   place-items: center;
   border-radius: 50%;
   overflow: hidden;
-  background-color: rgba(20, 20, 20, 0.8);
+  background-color: red;
 }
 
 .play_btn svg {
