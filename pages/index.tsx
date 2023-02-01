@@ -13,7 +13,7 @@ import Services from "../components/Services";
 import Spinner from "../components/Spinner/Spinner";
 
 export default function Home() {
-  const BASE_URL = "https://natural.choopon.uz/api";
+  const BASE_URL = "https://admin.argloballogistic.com/api";
 
   const router = useRouter();
 
